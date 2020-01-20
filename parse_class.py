@@ -22,9 +22,9 @@ import multiprocessing
 import time
 import requests
 
-TIER1 = ['fuck', 'bitch', 'slut', 'whore', 'cunt', 'death']
-TIER2 = ['slammer', 'floko', 'four loko', 'asshole', 'cock']
-TIER3 = ['shit', 'dick', 'ass', 'vodka', 'rum', 'chill', 'lit', 'gucci']
+TIER1 = [** ADD DESIRED SWEAR WORDS **]
+TIER2 = [** ADD DESIRED SWEAR WORDS **]
+TIER3 = [** ADD DESIRED SWEAR WORDS **]
 
 ALL = TIER1 + TIER2 + TIER3
 
@@ -61,7 +61,7 @@ class Parse:
     # credentials in order to obtain the data
     #
     #=======================================
-    def auth_twitter(key="", sec_key="", token="", sec_tok=""):
+    def auth_twitter(key="** API KEY **", sec_key="** API SEC KEY **", token="** API TOKEN **", sec_tok="** API SEC TOKEN **"):
         auth = tweepy.OAuthHandler(key, sec_key)
         auth.set_access_token(token, sec_tok)
 
