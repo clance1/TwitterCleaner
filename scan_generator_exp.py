@@ -24,7 +24,7 @@ import time
 import requests
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
-def auth_twitter(key="XXiOOh6ikh26NpVaVhNnVMXlF", sec_key="TigPzzltfJVMbuyjKgI1mwaaASoiTK9jD7IpCOXE8jPkNnj2YM", token="724802479-Qt76oHn3clpt72jZiQs7OL5N7dGLqcgUDN5s2O1q", sec_tok="2F6gAUeYbNzOGSCIGEjIL27rbEtFjNXQada4d98THpASb"):
+def auth_twitter(key="**INSERT API KEY**", sec_key="**INSERT API SECURE KEY**", token="**INSERT API TOKEN**", sec_tok="**INSERT API SECURE TOKEN**"):
     auth = tweepy.OAuthHandler(key, sec_key)
     auth.set_access_token(token, sec_tok)
 
@@ -38,7 +38,7 @@ def auth_twitter(key="XXiOOh6ikh26NpVaVhNnVMXlF", sec_key="TigPzzltfJVMbuyjKgI1m
         print("Error during Authentication")
         sys.exit()
 
-def get_tweets(username, api, rt, shorten, level):
+def get_tweets(username, api, rt, level):
 
     # Get all the tweets from the user's timeline and pass them through the filter to see if they are allowed
     c = tweepy.Cursor(api.user_timeline, id=username).items()
@@ -50,8 +50,8 @@ def get_tweets(username, api, rt, shorten, level):
             url = "https://twitter.com/" + tweet.user.screen_name + "/status/" + str(tweet.id)
 
             # Shorten the URL option
-            if shorten == 'y':
-                url = shorten_url(url)
+            #if shorten == 'y':
+                #url = shorten_url(url)
 
             t = {"https://twitter.com/" + tweet.user.screen_name + "/status/" + str(tweet.id): tweet.text}
             if rt == 'n' and re.search('RT', tweet.text) == None:
@@ -111,13 +111,13 @@ if __name__=='__main__':
     # Get parsing data from user
     user = input("Who is the user you would like to search? ")
     rt = input("Would you like to see retweets as well? (y/n)")
-    shorten = input("Would you like to shorten the link? (y/n)")
+    #shorten = input("Would you like to shorten the link? (y/n)")
     level = input("What level of filtering would you like to do?\n1. High\n2. Mid\n3. Low\n")
     level = int(level)
 
     count = 0
     # Return all the tweets
-    for i in get_tweets(user, api, rt, shorten, level):
+    for i in get_tweets(user, api, rt, level):
         count += 1
         pprint.pprint(i)
 
